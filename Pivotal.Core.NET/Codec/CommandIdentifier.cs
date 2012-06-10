@@ -18,33 +18,34 @@
 using System;
 
 namespace Pivotal.Core.NET.Codec {
-	
-	/// <summary>
-	/// Command identifier to define a given serial id to a given command type.
-	/// 
-	/// For example, in the binary codec scenario, the buffer may be constructed as such.
-	/// 
-	/// 1000:0:976 which will entail, 
-	///  - command id 1000 = EchoCommand
-	///  - reply: false
-	///  - sequence: 976
-	/// 
-	/// in XML, it may look like 
-	/// <code>
-	/// 	<EchoCommand>
-	/// 		<Reply>false</Reply>
-	/// 		<Sequence>987</Sequence>
-	/// 	</EchoCommand>
-	/// </code>
-	/// </summary>
-	public class CommandIdentifier {
-		public Object Serial { get; set; }
-		public Type CommandType { get; set; }
-		
-		public CommandIdentifier (Object serial, Type commandType) {
-			this.Serial = serial;
-			this.CommandType = commandType;
-		}
-	}
+  
+  /// <summary>
+  /// Command identifier to define a given serial id to a given command type.
+  /// 
+  /// For example, in the binary codec scenario, the buffer may be constructed as such.
+  /// 
+  /// 1000:0:976 which will entail, 
+  ///  - command id 1000 = EchoCommand
+  ///  - reply: false
+  ///  - sequence: 976
+  /// 
+  /// in XML, it may look like 
+  /// <code>
+  ///   <EchoCommand>
+  ///     <Reply>false</Reply>
+  ///     <Sequence>987</Sequence>
+  ///   </EchoCommand>
+  /// </code>
+  /// </summary>
+  public class CommandIdentifier {
+    public Object Serial { get; set; }
+
+    public Type CommandType { get; set; }
+    
+    public CommandIdentifier(Object serial, Type commandType) {
+      this.Serial = serial;
+      this.CommandType = commandType;
+    }
+  }
 }
 

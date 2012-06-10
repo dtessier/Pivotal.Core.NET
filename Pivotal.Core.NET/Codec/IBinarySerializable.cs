@@ -21,12 +21,13 @@ using System.Text;
 using Pivotal.Core.NET.Command;
 
 namespace Pivotal.Core.NET {
-	/// <summary>
-	/// Should be defined on Command types that will need to be handled by the BinarySerialCodec
-	/// </summary>
-	public interface IBinarySerializable {		
-		byte[] BinarySerialize(Encoding encoding);
-		ICommand BinaryDeserialize(byte[] buf, Encoding encoding); 
-	}
+  /// <summary>
+  /// Should be defined on Command types that will need to be handled by the BinarySerialCodec
+  /// </summary>
+  public interface IBinarySerializable {    
+    byte[] BinarySerialize(Encoding encoding);
+
+    ICommand BinaryDeserialize(byte[] buf, Encoding encoding); 
+  }
 }
 

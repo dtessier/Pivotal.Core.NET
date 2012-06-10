@@ -23,19 +23,25 @@ using System.Text;
 using Pivotal.Core.NET.Command;
 
 namespace Pivotal.Core.NET.Codec {
-    public interface IBufferCodec {
-        short MinLengthRequired();
-		
-		Object BuildSerial(Type type);
-		Object DetermineSerial(byte[] ba, Encoding encoding);
-		
-		void ScanForIdentity(String assemblyName, String searchPattern);
-		void AddIdentity(CommandIdentifier identity);
-		
-        ICommand ToCommand(Object serial, byte[] ba, Encoding encoding);
-        ICommand ToCommand(Object serial, Stream stream, Encoding encoding);
-        Stream ToStream(ICommand command, Encoding encoding);
-		byte[] ToByteArray(ICommand command, Encoding encoding, bool nil);
-        byte[] ToByteArray(ICommand command, Encoding encoding);
-    }
+  public interface IBufferCodec {
+    short MinLengthRequired();
+    
+    Object BuildSerial(Type type);
+
+    Object DetermineSerial(byte[] ba, Encoding encoding);
+    
+    void ScanForIdentity(String assemblyName, String searchPattern);
+
+    void AddIdentity(CommandIdentifier identity);
+    
+    ICommand ToCommand(Object serial, byte[] ba, Encoding encoding);
+
+    ICommand ToCommand(Object serial, Stream stream, Encoding encoding);
+
+    Stream ToStream(ICommand command, Encoding encoding);
+
+    byte[] ToByteArray(ICommand command, Encoding encoding, bool nil);
+
+    byte[] ToByteArray(ICommand command, Encoding encoding);
+  }
 }

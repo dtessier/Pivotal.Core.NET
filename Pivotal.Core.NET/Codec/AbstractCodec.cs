@@ -27,96 +27,100 @@ using System.Text.RegularExpressions;
 using Pivotal.Core.NET.Command;
 
 namespace Pivotal.Core.NET.Codec {
-	/// <summary>
-	/// Abstract buffer codec, base class when building custom handlers.
-	/// </summary>
-	public abstract class AbstractBufferCodec {
+  /// <summary>
+  /// Abstract buffer codec, base class when building custom handlers.
+  /// </summary>
+  public abstract class AbstractBufferCodec {
 	
-		protected Hashtable Identities { get; set; }
+    protected Hashtable Identities { get; set; }
 		
-		/// <summary>
-		/// Get the identifier for a specified type of command, this is determined based 
-		/// on the codec type used. For example: if XmlSerializer is used, then a command 
-		/// identifier may be EchoCommand, where Binary Codec may return value 1000.
-		/// 
-		/// The Codec implementation MUST implement this properly if ScanIdentities is used.
-		/// 
-		/// </summary>
-		/// <param name='type'>
-		/// Type.
-		/// </param>
-		protected abstract object BuildSerial(Type type);
+    /// <summary>
+    /// Get the identifier for a specified type of command, this is determined based 
+    /// on the codec type used. For example: if XmlSerializer is used, then a command 
+    /// identifier may be EchoCommand, where Binary Codec may return value 1000.
+    /// 
+    /// The Codec implementation MUST implement this properly if ScanIdentities is used.
+    /// 
+    /// </summary>
+    /// <param name='type'>
+    /// Type.
+    /// </param>
+    protected abstract object BuildSerial(Type type);
 		
-		/// <summary>
-		/// Scans the assembly for a given search pattern to identify types of commands.
-		/// </summary>
-		/// <param name='assemblyName'>
-		/// Assembly name.
-		/// </param>
-		/// <param name='searchPattern'>
-		/// Search pattern.
-		/// </param>
-		public virtual void ScanForIdentity(String assemblyName, String searchPattern) {
-			Regex regex = new Regex(searchPattern);
+    /// <summary>
+    /// Scans the assembly for a given search pattern to identify types of commands.
+    /// </summary>
+    /// <param name='assemblyName'>
+    /// Assembly name.
+    /// </param>
+    /// <param name='searchPattern'>
+    /// Search pattern.
+    /// </param>
+    public virtual void ScanForIdentity(String assemblyName, String searchPattern) {
+      Regex regex = new Regex(searchPattern);
 			            
-			Assembly assembly = null;
-			try {
-				assembly = Assembly.Load (assemblyName);
-			} catch (FileNotFoundException) {
-				Debug.WriteLine (String.Format (
-					"Warning: assembly by the name of {0} when scanning for ICommand types was not found",
-					assemblyName
-					));
-				return;
-			}
+      Assembly assembly = null;
+      try {
+        assembly = Assembly.Load (assemblyName);
+      } catch (FileNotFoundException) {
+        Debug.WriteLine (String.Format (
+			"Warning: assembly by the name of {0} when scanning " +
+        	"for ICommand types was not found", assemblyName)
+        );
+        return;
+      }
 			
-			Type[] types = assembly.GetTypes ();
-			foreach (Type type in types) {
+      Type[] types = assembly.GetTypes ();
+      foreach (Type type in types) {
 				
-				// TODO should check for ICommand interface...
+        // TODO should check for ICommand interface...
 				
-				String name = type.FullName;
+        String name = type.FullName;
 				
-				if (regex.IsMatch (name)) {
-					Console.Out.WriteLine (string.Format ("Matched Command Type {0}", type)); 
-					Object serial = BuildSerial (type);
-					CommandIdentifier identifier = new CommandIdentifier(serial, type);
-					AddIdentity(identifier);
-				}		
-			}
+        if (regex.IsMatch (name)) {
+          Console.Out.WriteLine (string.Format ("Matched Command Type {0}", type)); 
+          Object serial = BuildSerial (type);
+          CommandIdentifier identifier = new CommandIdentifier(serial, type);
+          AddIdentity (identifier);
+        }		
+      }
 			
-			return;
-		}
+      return;
+    }
 		
-		/// <summary>
-		/// Adds the command identifier, used when serializing or deserializing
-		/// commands, this is necessary to determine the type of command to 
-		/// deserialize to. e.g. EchoCommand in XML codecs will be defined by
-		/// "EchoCommand", versus binary Codec may define it as serial 1000
-		/// 
-		/// Each codec type is resonsible for building its own serial command types.
-		/// 
-		/// </summary>
-		/// <param name='identity'>
-		/// Identity.
-		/// </param>
-		public virtual void AddIdentity(CommandIdentifier identity) {
-			if (this.Identities == null) {
-				this.Identities = new Hashtable();
-			}
+    /// <summary>
+    /// Adds the command identifier, used when serializing or deserializing
+    /// commands, this is necessary to determine the type of command to 
+    /// deserialize to. e.g. EchoCommand in XML codecs will be defined by
+    /// "EchoCommand", versus binary Codec may define it as serial 1000
+    /// 
+    /// Each codec type is resonsible for building its own serial command types.
+    /// 
+    /// </summary>
+    /// <param name='identity'>
+    /// Identity.
+    /// </param>
+    public virtual void AddIdentity(CommandIdentifier identity) {
+      if (this.Identities == null) {
+        this.Identities = new Hashtable();
+      }
 			
-			// if the serial already exists, check to see if its a different command type?
-			if (Identities.ContainsKey (identity.Serial)) {
-				CommandIdentifier ci = Identities[identity.Serial] as CommandIdentifier;
-				if (!ci.CommandType.Equals (identity.CommandType)) {
-					throw new InvalidDataException(String.Format (
-						"Command identity already exists for command serial {0} on {1} != serial {2} on {3}", 
-					    ci.Serial, ci.CommandType.ToString(), identity.Serial, identity.CommandType));
-				}
-			}
+      // if the serial already exists, check to see if its a different command type?
+      if (Identities.ContainsKey (identity.Serial)) {
+        CommandIdentifier ci = Identities [identity.Serial] as CommandIdentifier;
+        if (!ci.CommandType.Equals (identity.CommandType)) {
+          throw new InvalidDataException(String.Format (
+            "Command identity already exists for command serial {0} on {1} != serial {2} on {3}", 
+            ci.Serial,
+            ci.CommandType.ToString(),
+            identity.Serial,
+            identity.CommandType)
+          );
+        }
+      }
 			
-			Identities[identity.Serial] = identity;
-		}
-	}
+      Identities [identity.Serial] = identity;
+    }
+  }
 }
 

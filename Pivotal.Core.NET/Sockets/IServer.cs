@@ -23,60 +23,60 @@ using Pivotal.Core.NET.Command;
 using Pivotal.Core.NET.Sockets;
 
 namespace Pivotal.Core.NET.Sockets {
-	
-	/// <summary>
-	/// IServer interface
-	/// </summary>
-	public interface IServer {
-		/// <summary>
-		/// Gets or sets the servers identifier, should be unique across a domain of servers.
-		/// </summary>
-		/// <value>
-		/// The identifier.
-		/// </value>
-		Int32 Id { get; set; }
+  
+  /// <summary>
+  /// IServer interface
+  /// </summary>
+  public interface IServer {
+    /// <summary>
+    /// Gets or sets the servers identifier, should be unique across a domain of servers.
+    /// </summary>
+    /// <value>
+    /// The identifier.
+    /// </value>
+    Int32 Id { get; set; }
 
-		/// <summary>
-		/// Start this instance.
-		/// </summary>
-		void Start();
-		
-		/// <summary>
-		/// Stop this instance.
-		/// </summary>
-		void Stop();
-		
-		
-		/// <summary>
-		/// Raised when a client socket connects to the server, connect event.
-		/// </summary>
-		/// <param name='client'>
-		/// Client.
-		/// </param>
-        void OnConnect(IClientSocket client);
-		
-		/// <summary>
-		/// Raised when the server receives a known command type, BUT has not 
-		/// been explicitly defined as part of the HandlerEventCommands.
-		/// </summary>
-		/// <param name='client'>
-		/// Client.
-		/// </param>
-		/// <param name='command'>
-		/// Command.
-		/// </param>
-        void OnReceived(IClientSocket client, ICommand command);
-		
-		/// <summary>
-		/// Raised when the server finishes sending a command on the specified socket.
-		/// </summary>
-		/// <param name='client'>
-		/// Client.
-		/// </param>
-		/// <param name='command'>
-		/// Command.
-		/// </param>
-        void OnSent(IClientSocket client, ICommand command);
-	}
+    /// <summary>
+    /// Start this instance.
+    /// </summary>
+    void Start();
+    
+    /// <summary>
+    /// Stop this instance.
+    /// </summary>
+    void Stop();
+    
+    
+    /// <summary>
+    /// Raised when a client socket connects to the server, connect event.
+    /// </summary>
+    /// <param name='client'>
+    /// Client.
+    /// </param>
+    void OnConnect(IClientSocket client);
+    
+    /// <summary>
+    /// Raised when the server receives a known command type, BUT has not 
+    /// been explicitly defined as part of the HandlerEventCommands.
+    /// </summary>
+    /// <param name='client'>
+    /// Client.
+    /// </param>
+    /// <param name='command'>
+    /// Command.
+    /// </param>
+    void OnReceived(IClientSocket client, ICommand command);
+    
+    /// <summary>
+    /// Raised when the server finishes sending a command on the specified socket.
+    /// </summary>
+    /// <param name='client'>
+    /// Client.
+    /// </param>
+    /// <param name='command'>
+    /// Command.
+    /// </param>
+    void OnSent(IClientSocket client, ICommand command);
+  }
 }
 
