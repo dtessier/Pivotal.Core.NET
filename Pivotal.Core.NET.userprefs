@@ -1,0 +1,30 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pivotal.Core.NET/Sockets/ClientSocket.cs">
+    <Files>
+      <File FileName="Pivotal.Core.NET/Main.cs" Line="14" Column="25" />
+      <File FileName="Pivotal.Core.NET.TestServer/TestServer.cs" Line="35" Column="102" />
+      <File FileName="Pivotal.Core.NET.TestServer/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="Pivotal.Core.NET.TestServer/Main.cs" Line="5" Column="43" />
+      <File FileName="Pivotal.Core.NET/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="Pivotal.Core.NET/Codec/AbstractCodec.cs" Line="70" Column="12" />
+      <File FileName="Pivotal.Core.NET/Codec/XmlBufferCodec.cs" Line="134" Column="49" />
+      <File FileName="Pivotal.Core.NET/Utilities/LogUtility.cs" Line="18" Column="1" />
+      <File FileName="Pivotal.Core.NET.TestServer/TestClient.cs" Line="67" Column="114" />
+      <File FileName="Pivotal.Core.NET/Sockets/ClientSocket.cs" Line="518" Column="1" />
+      <File FileName="Pivotal.Core.NET.TestServer/Command/WhatTimeIsItCommand.cs" Line="4" Column="11" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/krasaee/Projects/Pivotal/Core.NET/Sockets/AbstractServer.cs" line="97" />
+      <Breakpoint file="/Users/krasaee/Projects/Pivotal/Core.NET/Sockets/AbstractServer.cs" line="85" />
+      <Breakpoint file="/Users/krasaee/Documents/NWS/mono-projects/Pivotal/Core.NET/Codec/CodecSerializable.cs" line="60" />
+      <Breakpoint file="/Users/krasaee/Documents/NWS/mono-projects/Pivotal/Core.NET/Codec/CodecSerializable.cs" line="27" />
+      <Breakpoint file="/Users/krasaee/Documents/NWS/mono-projects/Pivotal/Core.NET/GlobalMoment.cs" line="24" />
+      <Breakpoint file="/Users/krasaee/Documents/NWS/mono-projects/Pivotal/Core.NET/GlobalMoment.cs" line="61" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <AuthorInfo Name="Kasra Rasaee" Email="krasaee@gmail.com" Copyright="Kasra Rasaee" Company="Pivotal 5 Solutions Inc." Trademark="" />
+</Properties>

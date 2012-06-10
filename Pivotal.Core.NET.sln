@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pivotal.Core.NET", "Pivotal.Core.NET\Pivotal.Core.NET.csproj", "{7F07FD16-8937-4688-8F86-51D1349C43FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pivotal.Core.NET.TestServer", "Pivotal.Core.NET.TestServer\Pivotal.Core.NET.TestServer.csproj", "{53285D40-9791-4020-AA51-86469A81002E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53285D40-9791-4020-AA51-86469A81002E}.Debug|x86.ActiveCfg = Debug|x86
+		{53285D40-9791-4020-AA51-86469A81002E}.Debug|x86.Build.0 = Debug|x86
+		{53285D40-9791-4020-AA51-86469A81002E}.Release|x86.ActiveCfg = Release|x86
+		{53285D40-9791-4020-AA51-86469A81002E}.Release|x86.Build.0 = Release|x86
+		{7F07FD16-8937-4688-8F86-51D1349C43FE}.Debug|x86.ActiveCfg = Debug|x86
+		{7F07FD16-8937-4688-8F86-51D1349C43FE}.Debug|x86.Build.0 = Debug|x86
+		{7F07FD16-8937-4688-8F86-51D1349C43FE}.Release|x86.ActiveCfg = Release|x86
+		{7F07FD16-8937-4688-8F86-51D1349C43FE}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Pivotal.Core.NET.TestServer\Pivotal.Core.NET.TestServer.csproj
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+		$0.VersionControlPolicy = $2
+		$2.inheritsSet = Mono
+		$0.ChangeLogPolicy = $3
+		$3.UpdateMode = None
+		$3.MessageStyle = $4
+		$4.LineAlign = 0
+		$3.inheritsSet = Mono
+		version = 
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
