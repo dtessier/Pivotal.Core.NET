@@ -48,7 +48,7 @@ namespace Pivotal.Core.NET.Sockets {
     /// <summary>
     /// The handler event commands.
     /// </summary>
-    protected Hashtable HandlerEventCommands = new Hashtable();
+    protected Hashtable EventHandlerCommands = new Hashtable();
 
     /// <summary>
     /// Determines whether this instance is receive event handler type the specified type.
@@ -60,8 +60,8 @@ namespace Pivotal.Core.NET.Sockets {
     /// Type.
     /// </param>
     public virtual HandlerCommandEvent IsReceiveEventHandlerType(Type type) {
-      if (HandlerEventCommands.ContainsKey (type)) {
-        return (HandlerCommandEvent)HandlerEventCommands [type];
+      if (EventHandlerCommands.ContainsKey (type)) {
+        return (HandlerCommandEvent)EventHandlerCommands [type];
       }
       return default(HandlerCommandEvent);
     }
@@ -85,11 +85,11 @@ namespace Pivotal.Core.NET.Sockets {
       }
 
       HandlerCommandEvent co = null;
-      if (HandlerEventCommands.ContainsKey (type)) {
-        co = (HandlerCommandEvent)HandlerEventCommands [type];
+      if (EventHandlerCommands.ContainsKey (type)) {
+        co = (HandlerCommandEvent)EventHandlerCommands [type];
       } else {
         co = new HandlerCommandEvent();
-        HandlerEventCommands.Add (type, e);
+        EventHandlerCommands.Add (type, e);
       }
 
       co.ReceiveEvent += e;
@@ -119,7 +119,8 @@ namespace Pivotal.Core.NET.Sockets {
         Debug.WriteLine (String.Format (
           "Invalid command was received, null pointer for client {0}",
           client
-        ));
+        )
+        );
         // TODO error on socket??
         return false;
       }
@@ -127,7 +128,7 @@ namespace Pivotal.Core.NET.Sockets {
       Type type = command.GetType ();
       //  Object serial = client.BufferCodec.BuildSerial (type);
       
-      if (!HandlerEventCommands.ContainsKey (type)) {
+      if (!EventHandlerCommands.ContainsKey (type)) {
         Debug.WriteLine (String.Format (
           "Command {0} with serial {1} received for Socket {2} on " +
           "Server type {3} but no OnReceiveDelegate event handler found for command type",
@@ -140,7 +141,7 @@ namespace Pivotal.Core.NET.Sockets {
         return false;
       }
       
-      OnReceiveDelegate deleg = (OnReceiveDelegate)HandlerEventCommands [type];
+      OnReceiveDelegate deleg = (OnReceiveDelegate)EventHandlerCommands [type];
       if (async) {
         deleg.BeginInvoke (
           client,

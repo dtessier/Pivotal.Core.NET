@@ -9,6 +9,7 @@ using Pivotal.Core.NET.Sockets;
 using Pivotal.Core.NET.Command;
 
 namespace Pivotal.Core.NET.TestServer {
+	
   public class TestServer : AbstractServer {
 
 		
@@ -114,5 +115,6 @@ namespace Pivotal.Core.NET.TestServer {
     }
 
   }
+	
 }
 
